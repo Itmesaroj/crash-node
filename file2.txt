@@ -1,0 +1,45 @@
+1. List all databases present in your MongoDB server:
+db.adminCommand('listDatabases')
+
+2. Create or switch to a database in MongoDB:
+use <database_name>
+
+3. Create a collection named "students" in your MongoDB database:
+db.createCollection("students")
+
+4. Insert a single document into the "students" collection with at least three fields (`name`, `age`, and `course`):
+db.students.insertOne({ name: "John Doe", age: 20, course: "Computer Science" })
+
+5. Insert multiple documents into the "students" collection in a single command:
+db.students.insertMany([
+  { name: "John Doe", age: 20, course: "Computer Science" },
+  { name: "Jane Smith", age: 22, course: "Mathematics" },
+  { name: "Emily Johnson", age: 21, course: "Physics" }
+])
+
+6. Find or read all documents in the "students" collection:
+db.students.find()
+
+7. Read or find the first document in the "students" collection:
+db.students.findOne()
+
+8. Update the `course` field of a specific student named "John Doe" to "Data Science":
+db.students.updateOne(
+  { name: "John Doe" },
+  { $set: { course: "Data Science" } }
+)
+
+9. Increment the `age` field of all documents in the "students" collection:
+db.students.updateMany(
+  {},
+  { $inc: { age: 1 } }
+)
+
+10. Delete a document with a specific name from the "students" collection:
+db.students.deleteOne({ name: "John Doe" })
+
+11. Delete all documents from the "students" collection where the age is greater than or equal to a specific value:
+db.students.deleteMany({ age: { $gte: 22 } })
+
+12. Find documents in the "students" collection where the `course` field is "Data Science":
+db.students.find({ course: "Data Science" })
